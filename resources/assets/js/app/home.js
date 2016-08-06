@@ -1,20 +1,47 @@
 	$(document).ready(function () {
-		var $checkbox = $('.todo-list .checkbox input[type=checkbox]');
-
-		$checkbox.change(function () {
-			if ($(this).is(':checked')) {
-				$(this).parent().addClass('checked');
-			} else {
-				$(this).parent().removeClass('checked');
-			}
-		});
-
-		$checkbox.each(function (index) {
-			if ($(this).is(':checked')) {
-				$(this).parent().addClass('checked');
-			} else {
-				$(this).parent().removeClass('checked');
-			}
+		$('#dataTables').DataTable({
+			dom: '<"html5buttons" B>lTfgitp',
+			buttons: [
+				{
+					extend: 'copyHtml5',
+					exportOptions: {
+						columns: ':visible'
+					}
+				},
+				{
+					extend: 'excelHtml5',
+					exportOptions: {
+						columns: ':visible'
+					}
+				},
+				{
+					extend: 'pdfHtml5',
+					exportOptions: {
+						columns: [ 0, 1 ]
+					}
+				},
+				'colvis'
+			],
+			initComplete: function () {
+	            this.api().columns().every( function () {
+	                var column = this;
+	                var select = $('<select><option value=""></option></select>')
+	                    .appendTo( $(column.footer()).empty() )
+	                    .on( 'change', function () {
+	                        var val = $.fn.dataTable.util.escapeRegex(
+	                            $(this).val()
+	                        );
+	 
+	                        column
+	                            .search( val ? '^'+val+'$' : '', true, false )
+	                            .draw();
+	                    } );
+	 
+	                column.data().unique().sort().each( function ( d, j ) {
+	                    select.append( '<option value="'+d+'">'+d+'</option>' )
+	                } );
+	            } );
+	        }
 		});
 
 		// charts

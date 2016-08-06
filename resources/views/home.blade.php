@@ -20,6 +20,10 @@
     collapse
 @endsection
 
+@section('css')
+    <link href="../resources/assets/css/plugins/datatables/jquery.dataTables.css" rel="stylesheet">
+    <link href="../resources/assets/js/plugins/datatables/extensions/Buttons/css/buttons.dataTables.css" rel="stylesheet">
+@endsection
 @section('content')
     <h1 class="page-title">Dashboard</h1>
     <div class="row">
@@ -28,7 +32,7 @@
                 <div class="col-md-6">
                     <div class="panel minimal panel-default">
                         <div class="panel-heading clearfix"> 
-                            <div class="panel-title">Signups</div> 
+                            <div class="panel-title">Asset</div> 
                             <ul class="panel-tool-options"> 
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
@@ -44,16 +48,11 @@
                         </div> 
                         <!-- panel body --> 
                         <div class="panel-body">
-                            <div class="row col-with-divider">
-                                <div class="col-xs-6 text-center stack-order"> 
-                                    <h1 class="no-margins">87</h1>
-                                    <small>This week</small>
-                                </div>
-                                <div class="col-xs-6 text-center stack-order"> 
-                                    <h1 class="no-margins">53</h1>
-                                    <small>Last week</small>
-                                </div>
+                            <div class="stack-order">
+                                <h1 class="no-margins">Rp {{ number_format($asset, 2, ',', '.') }}</h1>
+                                <small>Raised from {{ number_format($quantity, 0, ',', '.') }} items.</small>
                             </div>
+                            <div class="bar-chart-icon"></div>
                         </div> 
                     </div>
                 </div>
@@ -132,54 +131,10 @@
                         <!-- panel body --> 
                         <div class="panel-body panel-content"> 
                             <div class="stack-order text-center">
-                                <h1>7856</h1>
+                                <h1>{{ number_format($sold, 0, ',', '.') }}</h1>
                                 <h4>Products sold so far</h4>
                             </div>
                         </div> 
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <h2>Recent comments from customers</h2>
-                            <ul class="comments-list removeable-list">
-                                <li>
-                                    <div class="comment-head"><a href="#/">Jassica</a> commented on <a href="#/">4 keys to make your business unique</a></div>
-                                    <div class="comment-text">
-                                        <p>Thank you for posting such a wonderful content. The writing was outstanding. Subscribed to latest from you as well :)</p>
-                                    </div>
-                                    <div class="comment-footer">
-                                        <button class="btn btn-sm btn-success">APPROVE</button>
-                                        <button class="btn btn-sm btn-red">DELETE</button>
-                                    </div>
-                                    <a href="#/" class="remove"><img src="../resources/image/icon-close.png" alt="Remove" title="Remove"></a>
-                                </li>
-                                <li>
-                                    <div class="comment-head"><a href="#/">Jassica</a> commented on <a href="#/">4 keys to make your business unique</a></div>
-                                    <div class="comment-text">
-                                        <p>Thank you for posting such a wonderful content. The writing was outstanding. Subscribed to latest from you as well :)</p>
-                                    </div>
-                                    <div class="comment-footer">
-                                        <button class="btn btn-sm btn-success">APPROVE</button>
-                                        <button class="btn btn-sm btn-red">DELETE</button>
-                                    </div>
-                                    <a href="#/" class="remove"><img src="../resources/image/icon-close.png" alt="Remove" title="Remove"></a>
-                                </li>
-                                <li>
-                                    <div class="comment-head"><a href="#/">Jassica</a> commented on <a href="#/">4 keys to make your business unique</a></div>
-                                    <div class="comment-text">
-                                        <p>Thank you for posting such a wonderful content. The writing was outstanding. Subscribed to latest from you as well :)</p>
-                                    </div>
-                                    <div class="comment-footer">
-                                        <button class="btn btn-sm btn-success">APPROVE</button>
-                                        <button class="btn btn-sm btn-red">DELETE</button>
-                                    </div>
-                                    <a href="#/" class="remove"><img src="../resources/image/icon-close.png" alt="Remove" title="Remove"></a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -325,196 +280,6 @@
                 </div>
                 <button class="btn btn-primary btn-block btn-2x">SHOW MORE</button>
             </div>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="speed-analyzer">
-                        <div class="speed-analyzer-text">
-                            <h4>Download Speed Analyzer</h4>
-                            <p>Speed test run on different anlayzers including google and YSlow.</p>
-                        </div>
-                        <div class="speed-score">
-                            <strong class="score">82</strong>
-                            <span class="uppercase">Google Score</span>
-                        </div>
-                        <div class="speed-score">
-                            <strong class="score">73</strong>
-                            <span class="uppercase">YSlow Score</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading no-border clearfix"> 
-                    <h2 class="panel-title">TO-DOs for today</h2>
-                    <ul class="panel-tool-options"> 
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog icon-2x"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
-                                <li><a href="#"><i class="icon-list"></i> Detailed log</a></li>
-                                <li><a href="#"><i class="icon-chart-pie"></i> Statistics</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
-                            </ul>
-                         </li>
-                    </ul> 
-                </div> 
-                <!-- panel body --> 
-                <div class="panel-body">
-                    <ul class="list-item todo-list"> 
-                        <li> 
-                            <div class="checkbox checkbox-replace checkbox-primary"> 
-                                <input type="checkbox" id="task-1" /> <label for="task-1">Fresh look &amp; feel to repaint the website according to the new brand logo.</label> 
-                            </div> 
-                        </li> 
-                        <li> 
-                            <div class="checkbox checkbox-replace checkbox-primary"> 
-                                <input type="checkbox" id="task-2" checked /> <label for="task-2">Need some new responsive design for the wbesite.</label> 
-                            </div> 
-                        </li> 
-                        <li> 
-                            <div class="checkbox checkbox-replace checkbox-primary"> 
-                                <input type="checkbox" id="task-3" /> <label for="task-3">Fresh look &amp; feel to repaint the website according to the new brand logo. </label> 
-                            </div> 
-                        </li> 
-                        <li> 
-                            <div class="checkbox checkbox-replace checkbox-primary"> 
-                                <input type="checkbox" id="task-4" /> <label for="task-4">Fresh look &amp; feel to repaint the website according to the new brand logo. </label> 
-                            </div> 
-                        </li> 
-                        <li> 
-                            <div class="checkbox checkbox-replace checkbox-primary"> 
-                                <input type="checkbox" id="task-5" /> <label for="task-5">Fresh look &amp; feel to repaint the website according to the new brand logo. </label> 
-                            </div> 
-                        </li> 
-                    </ul>
-                    <div class="more">
-                        <button class="btn btn-primary">Click More</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading no-border clearfix"> 
-                    <h2 class="panel-title">Recent Members</h2>
-                    <ul class="panel-tool-options"> 
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog icon-2x"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
-                                <li><a href="#"><i class="icon-list"></i> Detailed log</a></li>
-                                <li><a href="#"><i class="icon-chart-pie"></i> Statistics</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
-                            </ul>
-                         </li>
-                    </ul> 
-                </div> 
-                <!-- panel body --> 
-                <div class="panel-body">
-                    <ul class="list-item member-list">
-                        <li>
-                            <div class="user-avatar">
-                                <img title="" alt="" class="img-circle avatar" src="../resources/image/john-smith.png">
-                            </div>
-                            <div class="user-detail">
-                                <h5>John Smith</h5>
-                                <p>Joined 15 mins ago.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="user-avatar">
-                                <img title="" alt="" class="img-circle avatar" src="../resources/image/domnic-brown.png">
-                            </div>
-                            <div class="user-detail">
-                                <h5>Domnic Brown</h5>
-                                <p>Joined 2 days ago.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="user-avatar">
-                                <img title="" alt="" class="img-circle avatar" src="../resources/image/stella-johnson.png">
-                            </div>
-                            <div class="user-detail">
-                                <h5>Stella Johnson</h5>
-                                <p>Joined 1 day ago.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="user-avatar">
-                                <img title="" alt="" class="img-circle avatar" src="../resources/image/alex-dolgove.png">
-                            </div>
-                            <div class="user-detail">
-                                <h5>Alex Dolgove</h5>
-                                <p>Joined 5 days ago.</p>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="more">
-                        <button class="btn btn-primary">Click More</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading no-border clearfix"> 
-                    <h2 class="panel-title">New Messages</h2>
-                    <ul class="panel-tool-options"> 
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog icon-2x"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
-                                <li><a href="#"><i class="icon-list"></i> Detailed log</a></li>
-                                <li><a href="#"><i class="icon-chart-pie"></i> Statistics</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
-                            </ul>
-                         </li>
-                    </ul> 
-                </div> 
-                <!-- panel body --> 
-                <div class="panel-body">
-                    <ul class="list-item message-list">
-                        <li>
-                            <i class="icon-mail icon-2x"></i>
-                            <div class="message-body">
-                                <h5>Interested in buying your pro</h5>
-                                <p>Your product sounds interesting I would love to check this ne...</p>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="icon-mail icon-2x"></i>
-                            <div class="message-body">
-                                <h5>Interested in buying your pro</h5>
-                                <p>Your product sounds interesting I would love to check this ne...</p>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="icon-mail icon-2x"></i>
-                            <div class="message-body">
-                                <h5>Interested in buying your pro</h5>
-                                <p>Your product sounds interesting I would love to check this ne...</p>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="icon-mail icon-2x"></i>
-                            <div class="message-body">
-                                <h5>Interested in buying your pro</h5>
-                                <p>Your product sounds interesting I would love to check this ne...</p>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="more">
-                        <button class="btn btn-primary">Click More</button>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <div class="row">
@@ -546,6 +311,75 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading no-border clearfix"> 
+                    <h2 class="panel-title">Low Stock Items</h2>
+                    <ul class="panel-tool-options"> 
+                        <li><a href="#" id="lines"><i class="icon-chart-line icon-2x"></i></a></li>
+                        <li><a href="#" id="bars"><i class="icon-chart-bar icon-2x"></i></a></li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog icon-2x"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
+                                <li><a href="#"><i class="icon-list"></i> Detailed log</a></li>
+                                <li><a href="#"><i class="icon-chart-pie"></i> Statistics</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
+                            </ul>
+                         </li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                   <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables">
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Vendor</th>
+                                    <th>Type</th>
+                                    <th>Material</th>
+                                    <th>Note</th>
+                                    <th>Purchase</th>
+                                    <th>Sell</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @if ($items->count())
+                                @foreach ($items as $item)
+                                <tr>
+                                    <td>{{ $item->code }}</td>
+                                    <td>{{ $item->vendor->name }}</td>
+                                    <td>{{ $item->type->name }}</td>
+                                    <td>{{ $item->material->name }}</td>
+                                    <td>{{ $item->note }}</td>
+                                    <td>{{ $item->purchase_price }}</td>
+                                    <td>{{ $item->sell_price }}</td>
+                                    <td>{{ $item->quantity }}</td>
+                                </tr>
+                                @endforeach
+                            @endif
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Vendor</th>
+                                    <th>Type</th>
+                                    <th>Material</th>
+                                    <th>Note</th>
+                                    <th>Purchase</th>
+                                    <th>Sell</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')
@@ -555,5 +389,15 @@
     <script src="../resources/assets/js/plugins/flot/jquery.flot.selection.min.js"></script>
     <script src="../resources/assets/js/plugins/flot/jquery.flot.pie.min.js"></script>
     <script src="../resources/assets/js/plugins/flot/jquery.flot.time.min.js"></script>
+
+    <script src="../resources/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../resources/assets/js/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="../resources/assets/js/plugins/datatables/extensions/Buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../resources/assets/js/plugins/datatables/jszip.min.js"></script>
+    <script src="../resources/assets/js/plugins/datatables/pdfmake.min.js"></script>
+    <script src="../resources/assets/js/plugins/datatables/vfs_fonts.js"></script>
+    <script src="../resources/assets/js/plugins/datatables/extensions/Buttons/js/buttons.html5.js"></script>
+    <script src="../resources/assets/js/plugins/datatables/extensions/Buttons/js/buttons.colVis.js"></script>
+
     <script src="../resources/assets/js/app/home.js"></script>
 @endsection

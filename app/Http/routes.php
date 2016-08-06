@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::auth();
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@GetView');
 /* API */
 Route::get('/api/vendor', 'ApiController@GetVendor');
 Route::get('/api/type', 'ApiController@GetType');
