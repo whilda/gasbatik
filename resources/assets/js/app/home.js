@@ -1,4 +1,5 @@
 	$(document).ready(function () {
+		/* Low Stock Data*/
 		$('#dataTables').DataTable({
 			dom: '<"html5buttons" B>lTfgitp',
 			buttons: [
@@ -44,138 +45,130 @@
 	        }
 		});
 
-		// charts
-		var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+		/* Line Bar Graph*/
+		$.getJSON( "./api/asset_history", function( AssetData ) {
+			// charts
+			var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-		var previousPoint = null;
-		$('#graph-bars, #graph-lines').bind('plothover', function (event, pos, item) {
-			if (item) {
-				if (previousPoint != item.dataIndex) {
-					previousPoint = item.dataIndex;
+			var previousPoint = null;
+			$('#graph-bars, #graph-lines').bind('plothover', function (event, pos, item) {
+				if (item) {
+					if (previousPoint != item.dataIndex) {
+						previousPoint = item.dataIndex;
+						$('#flotTip').remove();
+						var x = item.datapoint[0],
+								y = item.datapoint[1];
+
+						var color = item.series.color;
+						var day = new Date(x).getDate();
+						var month = monthNames[new Date(x).getMonth()];
+						var year = new Date(x).getFullYear();
+						showTooltip(item.pageX,
+								item.pageY,
+								day + ' ' + month + ',' + year
+								+ " : <strong>Rp " + y +
+								"</strong>");
+
+						/*content = item.series.label + ' = ' + item.datapoint[1];
+						 showTooltip(item.pageX, item.pageY, content);
+						 showTooltip(item.pageX, item.pageY, y + ' visitors at ' + x + '.00h');*/
+
+					}
+				} else {
 					$('#flotTip').remove();
-					var x = item.datapoint[0],
-							y = item.datapoint[1];
-
-					var color = item.series.color;
-					var day = new Date(x).getDate();
-					var month = monthNames[new Date(x).getMonth()];
-					var year = new Date(x).getFullYear();
-					showTooltip(item.pageX,
-							item.pageY,
-							day + ' ' + month + ',' + year
-							+ " : <strong>" + y +
-							" visitors</strong>");
-
-					/*content = item.series.label + ' = ' + item.datapoint[1];
-					 showTooltip(item.pageX, item.pageY, content);
-					 showTooltip(item.pageX, item.pageY, y + ' visitors at ' + x + '.00h');*/
-
+					previousPoint = null;
 				}
-			} else {
-				$('#flotTip').remove();
-				previousPoint = null;
-			}
-		});
-
-		var graphData = [{
-				// Visits
-				data: [[1196463600000, 45], [1196550000000, 30], [1196636400000, 98], [1196722800000, 37], [1196809200000, 95], [1196895600000, 45], [1196982000000, 65],
-					[1197068400000, 120], [1197154800000, 90], [1197241200000, 65], [1197327600000, 50]],
-				color: '#ff7575'
-			}, {
-				// Returning Visits
-				data: [[1196463600000, 100], [1196550000000, 170], [1196636400000, 260], [1196722800000, 127], [1196809200000, 240], [1196895600000, 180], [1196982000000, 160],
-					[1197068400000, 210], [1197154800000, 270], [1197241200000, 120], [1197327600000, 85]],
-				color: '#77b7c5',
-			}
-		];
-
-
-		// Lines
-		$.plot($('#graph-lines'), graphData, {
-			series: {
-				points: {
-					show: true,
-					radius: 3.5
-				},
-				lines: {
-					show: true,
-					fill: true
-				},
-				shadowSize: 0
-			},
-			grid: {
-				color: '#646464',
-				borderColor: 'transparent',
-				borderWidth: 20,
-				hoverable: true
-			},
-			xaxis: {
-				mode: "time",
-				tickColor: 'transparent',
-				tickDecimals: 2
-			},
-			yaxis: {
-				tickSize: 100
-			}
-		});
-
-		// Bars
-		$.plot($('#graph-bars'), graphData, {
-			series: {
-				points: {
-					show: true,
-					radius: 3.5,
-				},
-				lines: {
-					show: true,
-					fill: false
-				},
-				bars: {
-					show: false,
-					lineWidth: 5,
-					align: 'center'
-				},
-				shadowSize: 0,
-				hoverable: true
-			},
-			grid: {
-				color: '#646464',
-				borderColor: 'transparent',
-				borderWidth: 20,
-				hoverable: true
-			},
-			xaxis: {
-				mode: "time",
-				tickColor: 'transparent',
-				tickDecimals: 2
-			},
-			yaxis: {
-				tickSize: 100
-			}
-		});
-
-		var $graphBar = $('#graph-bars'), $graphLine = $('#graph-lines'), $linkLine = $('#lines'), $linkBar = $('#bars');
-		$graphBar.hide();
-		$linkLine.on('click', function (e) {
-			e.preventDefault();
-
-			$linkBar.removeClass('active');
-			$graphBar.fadeOut(function () {
-				$(this).addClass('active');
-				$graphLine.fadeIn();
 			});
-		});
-		$linkBar.on('click', function (e) {
-			e.preventDefault();
 
-			$linkLine.removeClass('active');
-			$graphLine.fadeOut(function () {
-				$(this).addClass('active');
-				$graphBar.fadeIn();
+			var graphData = [{
+					// asset
+					data: AssetData,
+					color: '#77b7c5'
+				}
+			];
+
+
+			// Lines
+			$.plot($('#graph-lines'), graphData, {
+				series: {
+					points: {
+						show: true,
+						radius: 3.5
+					},
+					lines: {
+						show: true,
+						fill: true
+					},
+					shadowSize: 0
+				},
+				grid: {
+					color: '#646464',
+					borderColor: 'transparent',
+					borderWidth: 20,
+					hoverable: true
+				},
+				xaxis: {
+					mode: "time",
+					tickColor: 'transparent',
+					tickDecimals: 2
+				}
+			});
+
+			// Bars
+			$.plot($('#graph-bars'), graphData, {
+				series: {
+					points: {
+						show: true,
+						radius: 3.5,
+					},
+					lines: {
+						show: true,
+						fill: false
+					},
+					bars: {
+						show: false,
+						lineWidth: 5,
+						align: 'center'
+					},
+					shadowSize: 0,
+					hoverable: true
+				},
+				grid: {
+					color: '#646464',
+					borderColor: 'transparent',
+					borderWidth: 20,
+					hoverable: true
+				},
+				xaxis: {
+					mode: "time",
+					tickColor: 'transparent',
+					tickDecimals: 2
+				}
+			});
+
+			var $graphBar = $('#graph-bars'), $graphLine = $('#graph-lines'), $linkLine = $('#lines'), $linkBar = $('#bars');
+			$graphBar.hide();
+			$linkLine.on('click', function (e) {
+				e.preventDefault();
+
+				$linkBar.removeClass('active');
+				$graphBar.fadeOut(function () {
+					$(this).addClass('active');
+					$graphLine.fadeIn();
+				});
+			});
+			$linkBar.on('click', function (e) {
+				e.preventDefault();
+
+				$linkLine.removeClass('active');
+				$graphLine.fadeOut(function () {
+					$(this).addClass('active');
+					$graphBar.fadeIn();
+				});
 			});
 		});
 
+		/* Revenue */
 		var revenueData = [{
 				// Visits
 				data: [[1167692400000, 400.05], [1167778800000, 1600.32], [1167865200000, 900.35], [1167951600000, 2100.31], [1168210800000, 1800.55], [1169766000000, 900.42], [1170025200000, 2285.01], [1170111600000, 1870.97], [1170198000000, 2145.14], [1170284400000, 1530.14], [1170370800000, 1490.02], [1170630000000, 1340.74], [1170716400000, 1280.88], [1170802800000, 1157.71], [1170889200000, 599.71], [1170975600000, 2159.89], [1171234800000, 1557.81], [1171321200000, 959.06], [1171407600000, 58.00], [1171494000000, 757.99]],

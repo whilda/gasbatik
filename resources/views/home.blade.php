@@ -286,7 +286,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading no-border clearfix"> 
-                    <h2 class="panel-title">Site Traffic</h2>
+                    <h2 class="panel-title">Asset history</h2>
                     <ul class="panel-tool-options"> 
                         <li><a href="#" id="lines"><i class="icon-chart-line icon-2x"></i></a></li>
                         <li><a href="#" id="bars"><i class="icon-chart-bar icon-2x"></i></a></li>

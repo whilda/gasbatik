@@ -173,28 +173,28 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="portfolio-item">
-                                <a href="#">
+                                <a href="https://www.facebook.com/guyub.haq">
                                     <img class="img-portfolio img-responsive" src="../resources/image/1.jpg">
                                 </a>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="portfolio-item">
-                                <a href="#">
+                                <a href="https://www.facebook.com/guyub.haq">
                                     <img class="img-portfolio img-responsive" src="../resources/image/2.jpg">
                                 </a>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="portfolio-item">
-                                <a href="#">
+                                <a href="https://www.facebook.com/guyub.haq">
                                     <img class="img-portfolio img-responsive" src="../resources/image/3.jpg">
                                 </a>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="portfolio-item">
-                                <a href="#">
+                                <a href="https://www.facebook.com/guyub.haq">
                                     <img class="img-portfolio img-responsive" src="../resources/image/4.jpg">
                                 </a>
                             </div>
@@ -241,8 +241,7 @@
                     <p>Pasar Karanggede Kios Atas Lantai 2</p>
                     <ul class="list-unstyled">
                         <li><i class="fa fa-whatsapp"></i> (+62) 81-329-778899</li>
-                        <li><i class="fa fa-whatsapp"></i> (+62) 0856-0196-5700</li>
-                        <li><i class="fa fa-whatsapp"></i>2BB16823</li>
+                        <li>BBM : 2BB16823</li>
                         <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:guyubhana@gmail.com">guyubhana@gmail.com</a>
                         </li>
                     </ul>

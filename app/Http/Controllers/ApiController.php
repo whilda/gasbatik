@@ -9,6 +9,7 @@ use App\Type;
 use App\Material;
 use App\Item;
 use App\Transaction;
+use App\AssetHistory;
 
 class ApiController extends Controller
 {
@@ -76,4 +77,19 @@ class ApiController extends Controller
         }
         return array('data' => $ret);
     }    
+
+    /*
+    *   url    : ./api/asset_history
+    *   method : get
+    */
+    public function GetAssetHistory()
+    {
+        $asset_histories = AssetHistory::all();
+        $output = array();
+        foreach ($asset_histories as $a){
+            $date = date_parse($a->created_at);
+            array_push($output,[mktime(0,0,0,$date['month'],$date['day'],$date['year'])*1000,$a->asset]);
+        }
+        echo json_encode($output);
+    }
 }

@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\AssetHistory;
 use App\Item;
-use App\Vendor;
-use App\Type;
-use App\Material;
 use DB;
 
 class HomeController extends Controller
@@ -19,17 +15,6 @@ class HomeController extends Controller
     public function testing_purpose()
     {
         
-    }
-    
-    public function api_asset()
-    {
-        $asset_histories = AssetHistory::all();
-        $output = array();
-        foreach ($asset_histories as $a){
-            $date = date_parse($a->created_at);
-            array_push($output,[mktime(0,0,0,$date['month'],$date['day'],$date['year'])*1000,$a->asset]);
-        }
-        echo json_encode($output);
     }
 
     /*
