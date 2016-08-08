@@ -30,6 +30,6 @@ class Kernel extends ConsoleKernel
             $query = 'select SUM(X.A) as asset from (select (purchase_price * quantity) as A from items) as X';
             $asset = DB::select($query)[0]->asset;
             AssetHistory::create(['asset' => $asset]);
-        })->daily()->Timezone('Asia/Jakarta');
+        })->daily()->timezone('Asia/Jakarta');
     }
 }
