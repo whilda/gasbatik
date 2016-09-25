@@ -44,7 +44,7 @@
 						</ul>
 					</div>
 					<div class="panel-body">
-						 <form method="post" action="./vendor">
+						 <form method="post" action="./material">
 							  <div class="form-group">
 								<label>Material</label>
 								<input type="text" class="form-control" id="name" name="name">

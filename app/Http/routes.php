@@ -44,3 +44,6 @@ Route::post('/stock', 'ItemController@SaveStock');
 Route::get('/trans_data', 'ItemController@GetTransDataView');
 Route::get('/trans_input', 'ItemController@GetTransInputView');
 Route::post('/trans_input', 'ItemController@SaveTransaction');
+Route::get('/trans_reject/{id}', 'ItemController@GetTransRejectWithIdView');
+Route::get('/trans_reject', 'ItemController@GetTransRejectView');
+Route::post('/trans_reject', 'ItemController@SaveReject');

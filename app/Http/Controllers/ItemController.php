@@ -190,4 +190,27 @@ DB::transaction(function () {
 });
 	return View('trans_input', ["items" => Item::all()])->with('success', 'ok');
     }
+    /*
+    * url    : ./trans_reject
+    * method : GET
+    */
+    public function GetTransRejectView()
+    {
+        return View('trans_reject', ["items" => Item::all()]);
+    }
+        /*
+    * url    : ./trans_reject
+    * method : GET
+    */
+    public function GetTransRejectWithIdView($id)
+    {
+        return View('trans_reject', ["items" => Item::all()]);
+    }
+    /* 
+    * url    : ./trans_reject
+    * method : POST
+    */
+    public function SaveReject(){
+
+    }
 }

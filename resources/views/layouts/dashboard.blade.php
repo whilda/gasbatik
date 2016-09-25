@@ -47,8 +47,8 @@
 <body>
 
 <!-- Page container -->
-<div class="page-container sidebar-collapsed">
-
+<!--<div class="page-container sidebar-collapsed">-->
+<div class="page-container">
 	<!-- Page Sidebar -->
 	<div class="page-sidebar">
 	
@@ -90,6 +90,7 @@
 				<ul class="nav @yield('trans_sub')"><!-- Pay Attention -->
 					<li class="@yield('trans_data')"><a href="./trans_data"><span class="title">Data view</span></a></li>
 					<li class="@yield('trans_input')"><a href="./trans_input"><span class="title">Input form</span></a></li>
+					<li class="@yield('trans_reject')"><a href="./trans_reject"><span class="title">Reject form</span></a></li>
 				</ul>
 			</li>
 		</ul>
