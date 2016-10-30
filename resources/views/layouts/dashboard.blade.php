@@ -10,26 +10,26 @@
     	@yield('title')
 </title>
 <!-- Site favicon -->
-<link rel='shortcut icon' type='image/x-icon' href='../resources/image/logo.ico' />
+<link rel='shortcut icon' type='image/x-icon' href="{{ env('APP_URL') }}/resources/image/logo.ico" />
 <!-- /site favicon -->
 
 <!-- Entypo font stylesheet -->
-<link href="../resources/assets/css/entypo.css" rel="stylesheet">
+<link href="{{ env('APP_URL') }}/resources/assets/css/entypo.css" rel="stylesheet">
 <!-- /entypo font stylesheet -->
 
 <!-- Font awesome stylesheet -->
-<link href="../resources/assets/css/font-awesome.min.css" rel="stylesheet">
+<link href="{{ env('APP_URL') }}/resources/assets/css/font-awesome.min.css" rel="stylesheet">
 <!-- /font awesome stylesheet -->
 
 <!-- Bootstrap stylesheet min version -->
-<link href="../resources/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="{{ env('APP_URL') }}/resources/assets/css/bootstrap.min.css" rel="stylesheet">
 <!-- /bootstrap stylesheet min version -->
 
 <!-- Mouldifi core stylesheet -->
-<link href="../resources/assets/css/mouldifi-core.css" rel="stylesheet">
+<link href="{{ env('APP_URL') }}/resources/assets/css/mouldifi-core.css" rel="stylesheet">
 <!-- /mouldifi core stylesheet -->
 
-<link href="../resources/assets/css/mouldifi-forms.css" rel="stylesheet">
+<link href="{{ env('APP_URL') }}/resources/assets/css/mouldifi-forms.css" rel="stylesheet">
 
 @yield('css')
 
@@ -54,7 +54,7 @@
 	
 		<!-- Site header  -->
 		<header class="site-header">
-		  <div class="site-logo"><a href="./home"><img src="../resources/image/simple_edited.png" alt="Mouldifi" title="Mouldifi"></a></div>
+		  <div class="site-logo"><a href="{{ env('APP_URL') }}/public/home"><img src="{{ env('APP_URL') }}/resources/image/simple_edited.png" alt="Mouldifi" title="Mouldifi"></a></div>
 		  <div class="sidebar-collapse hidden-xs"><a class="sidebar-collapse-icon" href="#"><i class="icon-menu"></i></a></div>
 		  <div class="sidebar-mobile-menu visible-xs"><a data-target="#side-nav" data-toggle="collapse" class="mobile-menu-icon" href="#"><i class="icon-menu"></i></a></div>
 		</header>
@@ -62,35 +62,35 @@
 		
 		<!-- Main navigation -->
 		<ul id="side-nav" class="main-menu navbar-collapse collapse">
-			<li class="has-sub @yield('dash') "><a href="./home"><i class="icon-gauge"></i><span class="title">Dashboard</span></a>
+			<li class="has-sub @yield('dash') "><a href="{{ env('APP_URL') }}/public/home"><i class="icon-gauge"></i><span class="title">Dashboard</span></a>
 				<ul class="nav @yield('dash_sub')">
-					<li class="@yield('misc')"><a href="./home"><span class="title">Misc.</span></a></li>
+					<li class="@yield('misc')"><a href="{{ env('APP_URL') }}/public/home"><span class="title">Misc.</span></a></li>
 					<li class="@yield('ecomm')"><a href="#"><span class="title">E-Commerce</span></a></li>
 				</ul>
 			</li>
 			<li class="@yield('vendor')">
-				<a href="./vendor"><i class="icon-user"></i><span class="title">Vendor</span></a>
+				<a href="{{ env('APP_URL') }}/public/vendor"><i class="icon-user"></i><span class="title">Vendor</span></a>
 			</li>
 			<li class="@yield('type')">
-				<a href="./type"><i class="icon-doc-text-inv"></i><span class="title">Type</span></a>
+				<a href="{{ env('APP_URL') }}/public/type"><i class="icon-doc-text-inv"></i><span class="title">Type</span></a>
 			</li>
 			<li class="@yield('material')">
-				<a href="./material"><i class="icon-feather"></i><span class="title">Material</span></a>
+				<a href="{{ env('APP_URL') }}/public/material"><i class="icon-feather"></i><span class="title">Material</span></a>
 			</li>
-			<li class="has-sub @yield('item')"><a href="#"><i class="icon-tag"></i><span class="title">Item</span></a>
+			<li class="has-sub @yield('item')"><a href="{{ env('APP_URL') }}/public/item_data"><i class="icon-tag"></i><span class="title">Item</span></a>
 				<ul class="nav @yield('item_sub')"><!-- Pay Attention -->
-					<li class="@yield('item_data')"><a href="./item_data"><span class="title">Data view</span></a></li>
-					<li class="@yield('item_input')"><a href="./item_input"><span class="title">Input form</span></a></li>
+					<li class="@yield('item_data')"><a href="{{ env('APP_URL') }}/public/item_data"><span class="title">Data view</span></a></li>
+					<li class="@yield('item_input')"><a href="{{ env('APP_URL') }}/public/item_input"><span class="title">Input form</span></a></li>
 				</ul>
 			</li>
 			<li class="@yield('stock')">
-				<a href="./stock"><i class="icon-archive"></i><span class="title">Stock</span></a>
+				<a href="{{ env('APP_URL') }}/public/stock"><i class="icon-archive"></i><span class="title">Stock</span></a>
 			</li>
 			<li class="has-sub @yield('trans')"><a href="#"><i class=" icon-basket"></i><span class="title">Transaction</span></a>
 				<ul class="nav @yield('trans_sub')"><!-- Pay Attention -->
-					<li class="@yield('trans_data')"><a href="./trans_data"><span class="title">Data view</span></a></li>
-					<li class="@yield('trans_input')"><a href="./trans_input"><span class="title">Input form</span></a></li>
-					<li class="@yield('trans_reject')"><a href="./trans_reject"><span class="title">Reject form</span></a></li>
+					<li class="@yield('trans_data')"><a href="{{ env('APP_URL') }}/public/trans_data"><span class="title">Data view</span></a></li>
+					<li class="@yield('trans_input')"><a href="{{ env('APP_URL') }}/public/trans_input"><span class="title">Input form</span></a></li>
+					<li class="@yield('trans_reject')"><a href="{{ env('APP_URL') }}/public/trans_reject"><span class="title">Reject form</span></a></li>
 				</ul>
 			</li>
 		</ul>
@@ -164,7 +164,7 @@
 						<li>
 							<ul class="media-list">
 								<li class="media">
-									<div class="media-left"><img alt="" class="img-circle img-sm" src="../resources/image/domnic-brown.png"></div>
+									<div class="media-left"><img alt="" class="img-circle img-sm" src="{{ env('APP_URL') }}/resources/image/domnic-brown.png"></div>
 									<div class="media-body">
 										<a class="media-heading" href="#">
 											<span class="text-semibold">Domnic Brown</span>
@@ -174,7 +174,7 @@
 									</div>
 								</li>
 								<li class="media">
-									<div class="media-left"><img alt="" class="img-circle img-sm" src="../resources/image/john-smith.png"></div>
+									<div class="media-left"><img alt="" class="img-circle img-sm" src="{{ env('APP_URL') }}/resources/image/john-smith.png"></div>
 									<div class="media-body">
 										<a class="media-heading" href="#">
 											<span class="text-semibold">John Smith</span>
@@ -184,7 +184,7 @@
 									</div>
 								</li>
 								<li class="media">
-									<div class="media-left"><img alt="" class="img-circle img-sm" src="../resources/image/stella-johnson.png"></div>
+									<div class="media-left"><img alt="" class="img-circle img-sm" src="{{ env('APP_URL') }}/resources/image/stella-johnson.png"></div>
 									<div class="media-body">
 										<a class="media-heading" href="#">
 											<span class="text-semibold">Stella Johnson</span>
@@ -194,7 +194,7 @@
 									</div>
 								</li>
 								<li class="media">
-									<div class="media-left"><img alt="" class="img-circle img-sm" src="../resources/image/alex-dolgove.png"></div>
+									<div class="media-left"><img alt="" class="img-circle img-sm" src="{{ env('APP_URL') }}/resources/image/alex-dolgove.png"></div>
 									<div class="media-body">
 										<a class="media-heading" href="#">
 											<span class="text-semibold">Alex Dolgove</span>
@@ -204,7 +204,7 @@
 									</div>
 								</li>
 								<li class="media">
-									<div class="media-left"><img alt="" class="img-circle img-sm" src="../resources/image/domnic-brown.png"></div>
+									<div class="media-left"><img alt="" class="img-circle img-sm" src="{{ env('APP_URL') }}/resources/image/domnic-brown.png"></div>
 									<div class="media-body">
 										<a class="media-heading" href="#">
 											<span class="text-semibold">Domnic Brown</span>
@@ -248,15 +248,15 @@
 <!-- /page container -->
 
 <!--Load JQuery-->
-<script src="../resources/assets/js/jquery.min.js"></script>
-<script src="../resources/assets/js/bootstrap.min.js"></script>
-<script src="../resources/assets/js/plugins/metismenu/jquery.metisMenu.js"></script>
-<script src="../resources/assets/js/plugins/blockui-master/jquery-ui.js"></script>
-<script src="../resources/assets/js/plugins/blockui-master/jquery.blockUI.js"></script>
-<script src="../resources/assets/js/functions.js"></script>
+<script src="{{ env('APP_URL') }}/resources/assets/js/jquery.min.js"></script>
+<script src="{{ env('APP_URL') }}/resources/assets/js/bootstrap.min.js"></script>
+<script src="{{ env('APP_URL') }}/resources/assets/js/plugins/metismenu/jquery.metisMenu.js"></script>
+<script src="{{ env('APP_URL') }}/resources/assets/js/plugins/blockui-master/jquery-ui.js"></script>
+<script src="{{ env('APP_URL') }}/resources/assets/js/plugins/blockui-master/jquery.blockUI.js"></script>
+<script src="{{ env('APP_URL') }}/resources/assets/js/functions.js"></script>
 
 <!--ChartJs-->
-<script src="../resources/assets/js/plugins/chartjs/Chart.min.js"></script>
+<script src="{{ env('APP_URL') }}/resources/assets/js/plugins/chartjs/Chart.min.js"></script>
 @yield('script')
 </body>
 </html>

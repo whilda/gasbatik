@@ -12,7 +12,11 @@ $(document).ready(function () {
             { "data": "customer" },
             { "data": "trans_date" },
             { "data": "profit" },
-            { "data": "total" }
+            { "data": "total" },
+            {
+                "className":      'item-reject',
+                "defaultContent": ''
+            },
         ],
         "order": [[1, 'asc']]
     } );
@@ -33,6 +37,12 @@ $(document).ready(function () {
             tr.addClass('shown');
             SetDataTable(row.data().id);
         }
+    } );
+    // Add event listener for reject
+    $('#dataTables tbody').on('click', 'td.item-reject', function () {
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+        window.location.href = "./trans_reject/" + row.data().id;
     } );
 });
 

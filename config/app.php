@@ -18,7 +18,7 @@ return [
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
-    |--------------------------------------------------------------------------
+    |----------------------------------------------------------------------
     |
     | When your application is in debug mode, detailed error messages with
     | stack traces will be shown on every error that occurs within your
@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://localhost/'),
 
     /*
     |--------------------------------------------------------------------------

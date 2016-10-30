@@ -34,6 +34,11 @@
 		}
 		tr.shown td.details-control {
 		    background: url('../resources/image/details_close.png') no-repeat center center;
+		    cursor: pointer;
+		}
+		tr td.item-reject {
+		    background: url('../resources/image/item_reject.png') no-repeat center center;
+		    cursor: pointer;
 		}
 	</style>
 @endsection
@@ -68,6 +73,7 @@
 											<th>Date</th>
 											<th>Profit</th>
 											<th>Total</th>
+											<th>Reject</th>
 										</tr>
 									</thead>
 									<tbody>

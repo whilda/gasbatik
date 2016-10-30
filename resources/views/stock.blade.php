@@ -79,7 +79,7 @@
 						  <div class="form-group row">
 						    <label for="inputPassword3" class="col-sm-2 form-control-label">Vendor</label>
 						    <div class="col-sm-10">
-						      <input type="text" value='@if ($errors->any()){{ $inputs['vendor'] }}@endif' class="form-control" id="vendor" name="vendor" placeholder="-" readonly="readonly">  
+						      <input type="text" value='@if ($errors->any()){{ $inputs['vendor'] }}@endif' class="form-control" id="vendor" name="vendor" placeholder="-" readonly="readonly">
 						    </div>
 						  </div>
 						  <div class="form-group row">

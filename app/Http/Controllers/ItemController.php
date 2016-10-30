@@ -11,6 +11,7 @@ use App\Vendor;
 use App\Type;
 use App\Material;
 use App\ItemHistory;
+use App\ItemReject;
 use App\Transaction;
 
 class ItemController extends Controller
@@ -190,13 +191,14 @@ DB::transaction(function () {
 });
 	return View('trans_input', ["items" => Item::all()])->with('success', 'ok');
     }
-    /*
+    /* ===============================================================================================
     * url    : ./trans_reject
     * method : GET
+    *  ===============================================================================================
     */
     public function GetTransRejectView()
     {
-        return View('trans_reject', ["items" => Item::all()]);
+        return View('trans_reject');
     }
         /*
     * url    : ./trans_reject
@@ -204,13 +206,56 @@ DB::transaction(function () {
     */
     public function GetTransRejectWithIdView($id)
     {
-        return View('trans_reject', ["items" => Item::all()]);
+        return View('trans_reject', ["trans_items" => Transaction::find($id)]);
     }
     /* 
     * url    : ./trans_reject
     * method : POST
     */
     public function SaveReject(){
+DB::transaction(function () {
+        $total = 0;
+        $profit = 0;
+        $transaction = Transaction::find(Input::get("id"));
+        foreach ($transaction->items as $item) {
+            $reject_qty = Input::get($item->id);
+            if ($reject_qty > 0) {
+                /* Update pivot */
+                $new_qty = ($item->pivot->qty - $reject_qty);
+                $new_total = $item->pivot->unit_price * $new_qty;
+                $new_profit = $item->pivot->unit_profit * $new_qty;
+                $detail = array(
+                    'qty'           => $new_qty,
+                    'note'          => $item->pivot->note,
+                    'unit_price'    => $item->pivot->unit_price,
+                    'unit_profit'   => $item->pivot->unit_profit,
+                    'sum_price'     => $new_total,
+                    'sum_profit'    => $new_profit,
+                );
+                $transaction->items()->updateExistingPivot($item->id, $detail);
+                /* Update item */
+                $real_item = Item::find($item->id);
+                $real_item->quantity += $reject_qty;
+                $real_item->save();
+                /* Insert Item Reject */
+                $itemReject = array(
+                        'item_id'   => $item->id,
+                        'qty'       => $reject_qty,
+                );
+                ItemReject::create($itemReject);
+                /* Calc */
+                $total += $new_total;
+                $profit += $new_profit;
+            } else {
+                $total += $item->pivot->sum_price;
+                $profit += $item->pivot->sum_profit;
+            }
+        }
+        $transaction->total = $total;
+        $transaction->profit = $profit;
+        $transaction->save();
 
+});
+        return View('trans_reject', ["trans_items" => Transaction::find(Input::get("id"))])->with("success","ok");
     }
 }
