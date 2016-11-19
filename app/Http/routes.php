@@ -24,6 +24,7 @@ Route::get('/api/material', 'ApiController@GetMaterial');
 Route::get('/api/item/{id}', 'ApiController@GetItem');
 Route::get('/api/transaction', 'ApiController@GetTransaction');
 Route::get('/api/asset_history', 'ApiController@GetAssetHistory');
+Route::get('/api/revenue', 'ApiController@GetRevenue');
 /* Vendor */
 Route::get('/vendor', 'VendorController@GetView');
 Route::post('/vendor', 'VendorController@Save');

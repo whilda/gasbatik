@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Input;
 use Validator;
+use DB;
 use App\Vendor;
 use App\Type;
 use App\Material;
@@ -89,6 +90,24 @@ class ApiController extends Controller
         foreach ($asset_histories as $a){
             $date = date_parse($a->created_at);
             array_push($output,[mktime(0,0,0,$date['month'],$date['day'],$date['year'])*1000,$a->asset]);
+        }
+        echo json_encode($output);
+    }
+
+    /*
+    *   url    : ./api/revenue
+    *   method : get
+    */
+    public function GetRevenue()
+    {
+        $transactions = DB::Table("transactions")
+                                ->select(DB::raw("trans_date, sum(total) as total"))
+                                ->groupBy("trans_date")
+                                ->get();
+        $output = array();
+        foreach ($transactions as $t){
+            $date = date_parse($t->trans_date);
+            array_push($output,[mktime(0,0,0,$date['month'],$date['day'],$date['year'])*1000,$t->total]);
         }
         echo json_encode($output);
     }

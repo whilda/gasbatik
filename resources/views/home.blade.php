@@ -49,64 +49,8 @@
                         <!-- panel body --> 
                         <div class="panel-body">
                             <div class="stack-order">
-                                <h1 class="no-margins">Rp {{ number_format($asset, 2, ',', '.') }}</h1>
+                                <h1 class="no-margins">Rp {{ number_format($asset, 0, ',', '.') }}</h1>
                                 <small>Raised from {{ number_format($quantity, 0, ',', '.') }} items.</small>
-                            </div>
-                            <div class="bar-chart-icon"></div>
-                        </div> 
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="panel minimal panel-default">
-                        <div class="panel-heading clearfix"> 
-                            <div class="panel-title">Last month sale</div> 
-                            <ul class="panel-tool-options"> 
-                                <li class="dropdown">
-                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
-                                        <li><a href="#"><i class="icon-list"></i> Detailed log</a></li>
-                                        <li><a href="#"><i class="icon-chart-pie"></i> Statistics</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
-                                    </ul>
-                                 </li>
-                            </ul>  
-                        </div> 
-                        <!-- panel body --> 
-                        <div class="panel-body"> 
-                            <div class="stack-order">
-                                <h1 class="no-margins">$87,003</h1>
-                                <small>Raised from 89 orders.</small>
-                            </div>
-                            <div class="bar-chart-icon"></div>
-                        </div> 
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="panel minimal panel-default">
-                        <div class="panel-heading clearfix"> 
-                            <div class="panel-title">Visitors</div> 
-                            <ul class="panel-tool-options"> 
-                                <li class="dropdown">
-                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
-                                        <li><a href="#"><i class="icon-list"></i> Detailed log</a></li>
-                                        <li><a href="#"><i class="icon-chart-pie"></i> Statistics</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
-                                    </ul>
-                                 </li>
-                            </ul>  
-                        </div> 
-                        <!-- panel body --> 
-                        <div class="panel-body">
-                            <div class="stack-order">
-                                <h1 class="no-margins">823</h1>
-                                <small>New visits this month</small>
                             </div>
                             <div class="bar-chart-icon"></div>
                         </div> 
@@ -133,6 +77,46 @@
                             <div class="stack-order text-center">
                                 <h1>{{ number_format($sold, 0, ',', '.') }}</h1>
                                 <h4>Products sold so far</h4>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel minimal panel-default">
+                        <div class="panel-heading clearfix"> 
+                            <div class="panel-title">Last Month Revenue</div> 
+                            <ul class="panel-tool-options"> 
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
+                                        <li><a href="#"><i class="icon-list"></i> Detailed log</a></li>
+                                        <li><a href="#"><i class="icon-chart-pie"></i> Statistics</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
+                                    </ul>
+                                 </li>
+                            </ul>  
+                        </div> 
+                        <!-- panel body --> 
+                        <div class="panel-body">
+                            <div class="row col-with-divider">
+                                <div class="col-xs-6 text-center stack-order"> 
+                                    <small>Gross Revenue</small>
+                                </div>
+                                <div class="col-xs-6 text-center stack-order"> 
+                                    <small>Net Revenue</small>
+                                </div>
+                            </div>
+                            <div class="row col-with-divider">
+                                <div class="col-xs-6 text-center stack-order"> 
+                                    <h1 class="no-margins">{{ number_format($prev_gross, 0, ',', '.') }}</h1>
+                                </div>
+                                <div class="col-xs-6 text-center stack-order"> 
+                                    <h1 class="no-margins">{{ number_format($prev_net, 0, ',', '.') }}</h1>
+                                </div>
                             </div>
                         </div> 
                     </div>
@@ -199,11 +183,11 @@
                             <div class="row-revenue clearfix">
                                 <div class="col-xs-6">
                                     <h5>Gross Revenue</h5>
-                                    <h1>9,362.74</h1>
+                                    <h1>{{ number_format($now_gross, 0, ',', '.') }}</h1>
                                 </div>
                                 <div class="col-xs-6">
                                     <h5>Net Revenue</h5>
-                                    <h1>6,734.89</h1>
+                                    <h1>{{ number_format($now_net, 0, ',', '.') }}</h1>
                                 </div>
                             </div>
                         </div>

@@ -27,11 +27,16 @@ class HomeController extends Controller
     }
     /* ==================================================================================================== */
     public function PrepareData(){
+        $revenue = $this->CalcRevenue();
         return [
                 'items' => $this->LowStockItem(), 
                 'asset' => $this->CalcAsset(),
                 'quantity' => $this->CalcQty(),
                 'sold' => $this->CalcSoldSofar(),
+                'now_gross' => $revenue[0]->total,
+                'now_net' => $revenue[0]->profit,
+                'prev_gross' => $revenue[1]->total,
+                'prev_net' => $revenue[1]->profit,
                 ];
     }
     public function LowStockItem(){
@@ -48,5 +53,9 @@ class HomeController extends Controller
     public function CalcSoldSofar(){
         $query = 'select SUM(qty) as sum from detail_transactions';
         return DB::select($query)[0]->sum;
+    }
+    public function CalcRevenue(){
+        $query = 'select t.trans_date,sum(t.total) as total, sum(t.profit) as profit, MONTH(t.trans_date) as month_, YEAR(t.trans_date) as year_ from transactions as t group by year_,month_ ORDER BY t.trans_date DESC LIMIT 2';
+        return DB::select($query);
     }
 }
