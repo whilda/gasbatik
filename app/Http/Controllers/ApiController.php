@@ -85,7 +85,7 @@ class ApiController extends Controller
     */
     public function GetAssetHistory()
     {
-        $asset_histories = AssetHistory::all();
+        $asset_histories = DB::Table("asset_histories")->groupBy("asset")->orderBy("id","asc")->get();
         $output = array();
         foreach ($asset_histories as $a){
             $date = date_parse($a->created_at);
