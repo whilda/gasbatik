@@ -58,4 +58,8 @@ class HomeController extends Controller
         $query = 'select t.trans_date,sum(t.total) as total, sum(t.profit) as profit, MONTH(t.trans_date) as month_, YEAR(t.trans_date) as year_ from transactions as t group by year_,month_ ORDER BY t.trans_date DESC LIMIT 2';
         return DB::select($query);
     }
+    public function CalcStock(){
+        $query = 'select h.created_at, sum(h.quantity * h.purchase_price) as total, MONTH(h.created_at) as month_, YEAR(h.created_at) as year_ from item_histories as h group by year_,month_ having month_ = '.date("m");
+        return DB::select($query);
+    }
 }

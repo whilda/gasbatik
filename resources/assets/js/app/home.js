@@ -327,59 +327,26 @@
 				$.plot($("#Revenue-lines"), revenueData, options);
 			});
 		});
-		// pie graph
-		var doughnutData = [
-			{
-				value: 5742,
-				color: "#2bbfba",
-				highlight: "#1fb3ae",
-				label: "Only Visited"
-			},
-			{
-				value: 2496,
-				color: "#00b8ce",
-				highlight: "#00acc2",
-				label: "Purchased"
-			},
-			{
-				value: 1762,
-				color: "#e5e8eb",
-				highlight: "#d9dcdf",
-				label: "Bounced"
-			}
-		];
+		// gauge chart
+		$.getJSON( "./api/stockgauge", function( stockData ) {
+		    var gaugeChart = new c3.generate({
+		        bindto: '#gauge',
+		        gauge: {
+		            min: 0,
+		            max: stockData.last_month_revenue,
+		            width: 50,
+		            units: ''
+		        },
+		        data: {
+		            columns: [
+		                ['data', stockData.this_month_stocking]
+		            ],
+		            type: 'gauge'
+		        },
+		        color: {
+		            pattern: ['#00b8ce', '#dfdbdb']
 
-		var doughnutOptions = {
-			segmentShowStroke: true,
-			segmentStrokeColor: "#fff",
-			segmentStrokeWidth: 4,
-			percentageInnerCutout: 60, // This is 0 for Pie charts
-			animationSteps: 100,
-			animationEasing: "easeOutBounce",
-			animateRotate: true,
-			animateScale: false,
-			responsive: true,
-			//String - A legend template
-			legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
-		};
-
-		var canvas = document.getElementById("doughnutChart");
-		var helpers = Chart.helpers;
-		//var ctx = document.getElementById("doughnutChart").getContext("2d");
-		var moduleDoughnut = new Chart(canvas.getContext("2d")).Doughnut(doughnutData, doughnutOptions);
-		var legendHolder = document.createElement('div');
-		legendHolder.innerHTML = moduleDoughnut.generateLegend();
-		helpers.each(legendHolder.firstChild.childNodes, function (legendNode, index) {
-			helpers.addEvent(legendNode, 'mouseover', function () {
-				var activeSegment = moduleDoughnut.segments[index];
-				activeSegment.save();
-				activeSegment.fillColor = activeSegment.highlightColor;
-				moduleDoughnut.showTooltip([activeSegment]);
-				activeSegment.restore();
-			});
+		        }
+		    });
 		});
-		helpers.addEvent(legendHolder.firstChild, 'mouseout', function () {
-			moduleDoughnut.draw();
-		});
-		canvas.parentNode.parentNode.appendChild(legendHolder.firstChild);
 	});

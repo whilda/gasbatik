@@ -11,6 +11,7 @@ use App\Material;
 use App\Item;
 use App\Transaction;
 use App\AssetHistory;
+use App\Http\Controllers\HomeController;
 
 class ApiController extends Controller
 {
@@ -110,5 +111,19 @@ class ApiController extends Controller
             array_push($output,[mktime(0,0,0,$date['month'],$date['day'],$date['year'])*1000,$t->total]);
         }
         echo json_encode($output);
+    }
+    /*
+    *   url    : ./api/stockgauge
+    *   method : get
+    */
+    public function GetStockGauge()
+    {
+        $last_month_revenue = (new HomeController)->CalcRevenue()[1]->total;
+        $this_month_stocking = (new HomeController)->CalcStock()[0]->total;
+        $json_obj = array(
+                'last_month_revenue'    => $last_month_revenue,
+                'this_month_stocking'   => $this_month_stocking,
+        );
+        return json_encode($json_obj);
     }
 }

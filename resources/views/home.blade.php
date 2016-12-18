@@ -23,6 +23,7 @@
 @section('css')
     <link href="../resources/assets/css/plugins/datatables/jquery.dataTables.css" rel="stylesheet">
     <link href="../resources/assets/js/plugins/datatables/extensions/Buttons/css/buttons.dataTables.css" rel="stylesheet">
+    <link href="../resources/assets/css/plugins/c3/c3.min.css" rel="stylesheet">
 @endsection
 @section('content')
     <h1 class="page-title">Dashboard</h1>
@@ -126,7 +127,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading no-border clearfix"> 
-                            <h3 class="panel-title">VISIT STATS</h3>
+                            <h3 class="panel-title">Stock Gauge</h3>
                             <ul class="panel-tool-options"> 
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog icon-2x"></i></a>
@@ -142,10 +143,7 @@
                         </div> 
                         <!-- panel body --> 
                         <div class="panel-body"> 
-                            <div class="canvas-chart has-doughnut-legend">
-                                <canvas id="doughnutChart" width="408" height="300"></canvas>
-                            </div>
-                            <div class="height-13"></div>
+                            <div id="gauge"></div>
                         </div> 
                     </div>
                 </div>
@@ -382,6 +380,9 @@
     <script src="../resources/assets/js/plugins/datatables/vfs_fonts.js"></script>
     <script src="../resources/assets/js/plugins/datatables/extensions/Buttons/js/buttons.html5.js"></script>
     <script src="../resources/assets/js/plugins/datatables/extensions/Buttons/js/buttons.colVis.js"></script>
+
+    <script src="../resources/assets/js/plugins/c3/d3.v3.min.js"></script>
+    <script src="../resources/assets/js/plugins/c3/c3.min.js"></script>
 
     <script src="../resources/assets/js/app/home.js"></script>
 @endsection
