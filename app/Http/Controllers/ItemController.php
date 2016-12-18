@@ -117,6 +117,7 @@ class ItemController extends Controller
     	
     	$itemHist = array(
     			'item_id'		=> Input::get('item_id'),
+                'quantity'       => Input::get('quantity'),
     			'purchase_price' => Input::get('purchase_price'),
     			'sell_price'	=> Input::get('sell_price'),
     	);
