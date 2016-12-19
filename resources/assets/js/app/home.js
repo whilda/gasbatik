@@ -349,4 +349,18 @@
 		        }
 		    });
 		});
+	    //BAR CHART
+	    // gauge chart
+		$.getJSON( "./api/finance", function( financeData ) {
+		    var barChart = new Morris.Bar({
+		        element: 'morris-bar-chart',
+		        data: financeData,
+		        xkey: 'y_',
+		        ykeys: ['gross', 'net', 'stock'],
+		        labels: ['Gross Revenue', 'Net Revenue', 'Stock'],
+		        hideHover: 'auto',
+		        resize: true,
+		        barColors: ['#057791', '#00b8ce', '#0edaf9'],
+		    });
+		});
 	});

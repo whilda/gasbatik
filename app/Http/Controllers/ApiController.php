@@ -126,4 +126,19 @@ class ApiController extends Controller
         );
         return json_encode($json_obj);
     }
+    /*
+    *   url    : ./api/finance
+    *   method : get
+    */
+    public function GetFinance()
+    {
+        $query = "select total as gross, profit as net, stock, CONCAT(MONTHNAME(CONCAT('2000-',month1_,'-1')),' ',year1_) as y_
+from 
+    (select sum(t.total) as total, sum(t.profit) as profit, MONTH(t.trans_date) as month1_, YEAR(t.trans_date) as year1_ from transactions as t group by year1_,month1_ ORDER BY t.trans_date) as revenue
+INNER JOIN
+    (select sum(ih.quantity * ih.purchase_price) as stock, MONTH(ih.created_at) as month2_, YEAR(ih.created_at) as year2_ from item_histories as ih group by year2_,month2_ ORDER BY ih.created_at) as stock
+ON
+    revenue.month1_ = stock.month2_ and revenue.year1_ = stock.year2_";
+        return DB::select($query);
+    }
 }

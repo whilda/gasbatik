@@ -24,6 +24,7 @@
     <link href="../resources/assets/css/plugins/datatables/jquery.dataTables.css" rel="stylesheet">
     <link href="../resources/assets/js/plugins/datatables/extensions/Buttons/css/buttons.dataTables.css" rel="stylesheet">
     <link href="../resources/assets/css/plugins/c3/c3.min.css" rel="stylesheet">
+    <link href="../resources/assets/css/plugins/morris/morris.css" rel="stylesheet">
 @endsection
 @section('content')
     <h1 class="page-title">Dashboard</h1>
@@ -83,6 +84,7 @@
                     </div>
                 </div>
             </div>
+<!--
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel minimal panel-default">
@@ -101,7 +103,7 @@
                                  </li>
                             </ul>  
                         </div> 
-                        <!-- panel body --> 
+                         
                         <div class="panel-body">
                             <div class="row col-with-divider">
                                 <div class="col-xs-6 text-center stack-order"> 
@@ -123,6 +125,7 @@
                     </div>
                 </div>
             </div>
+-->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -147,6 +150,33 @@
                         </div> 
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12"> 
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix"> 
+                                <div class="panel-title">Finance Record</div> 
+                                 <ul class="panel-tool-options"> 
+                                    <li class="dropdown">
+                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
+                                            <li><a href="#"><i class="icon-list"></i> Detailed log</a></li>
+                                            <li><a href="#"><i class="icon-chart-pie"></i> Statistics</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
+                                        </ul>
+                                     </li>
+                                </ul> 
+                            </div> 
+                            <!-- panel body --> 
+                            <div class="panel-body"> 
+                                <div class="morris-chart">
+                                    <div id="morris-bar-chart"></div>
+                                </div>
+                            </div> 
+                        </div> 
+                    </div>
             </div>
         </div>
         <div class="col-lg-6">
@@ -383,6 +413,9 @@
 
     <script src="../resources/assets/js/plugins/c3/d3.v3.min.js"></script>
     <script src="../resources/assets/js/plugins/c3/c3.min.js"></script>
+
+    <script src="../resources/assets/js/plugins/morris/raphael-min.js"></script>
+    <script src="../resources/assets/js/plugins/morris/morris.min.js"></script>
 
     <script src="../resources/assets/js/app/home.js"></script>
 @endsection
