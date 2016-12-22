@@ -80,12 +80,15 @@ class ItemController extends Controller
     			->withErrors("Must choose material");
     	
    		$item = Item::create($input);
+
    		$itemHist = array(
    				'item_id' => $item->id,
+                'quantity'       => $item->quantity,
    				'purchase_price' => $item->purchase_price,
    				'sell_price' => $item->sell_price,
    		);
    		ItemHistory::create($itemHist);
+
    		return View('item_input', $this->PrepareData())->with('success', 'ok');
     }
     
