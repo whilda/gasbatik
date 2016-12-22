@@ -20,6 +20,10 @@
 	active
 @endsection
 
+@section('stock_sub')
+    collapse    
+@endsection
+
 @section('css')
 	<link href="{{ env('APP_URL') }}/resources/assets/css/plugins/select2/select2.css" rel="stylesheet">
 @endsection

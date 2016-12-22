@@ -24,6 +24,10 @@
 	
 @endsection
 
+@section('stock_sub')
+    collapse    
+@endsection
+
 @section('css')
 	<link href="../resources/assets/css/plugins/datatables/jquery.dataTables.css" rel="stylesheet">
 	<link href="../resources/assets/js/plugins/datatables/extensions/Buttons/css/buttons.dataTables.css" rel="stylesheet">

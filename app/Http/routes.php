@@ -43,7 +43,8 @@ Route::get('/item_input', 'ItemController@GetInputView');
 Route::post('/item_input', 'ItemController@Save');
 /* Stock */
 Route::get('/stock', 'ItemController@GetStockView');
-Route::post('/stock', 'ItemController@SaveStock');
+Route::get('/stock_input', 'ItemController@GetStockInput');
+Route::post('/stock_input', 'ItemController@SaveStockInput');
 /* Transaction */
 Route::get('/trans_data', 'ItemController@GetTransDataView');
 Route::get('/trans_input', 'ItemController@GetTransInputView');

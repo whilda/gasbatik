@@ -24,6 +24,10 @@
 	
 @endsection
 
+@section('stock_sub')
+    collapse    
+@endsection
+
 @section('css')
 	<link href="../resources/assets/css/plugins/select2/select2.css" rel="stylesheet">
 	<link href="../resources/assets/css/plugins/datepicker/bootstrap-datepicker.css" rel="stylesheet">

@@ -96,13 +96,22 @@ class ItemController extends Controller
     */
     public function GetStockView()
     {
-    	return View('stock', ["items" => Item::all()]);
+        return View('stock_data', ["ItemsHistories" => ItemHistory::all()->sortBy('created_at')]);
+    }
+    /*
+    * url    : ./stock_input
+    * method : POST
+    */
+
+    public function GetStockInput()
+    {
+        return View('stock_input', ["items" => Item::all()]);
     }
     /*
     * url    : ./stock
     * method : POST
     */
-    public function SaveStock(){
+    public function SaveStockInput(){
     	$input = Input::all();
     	if(Input::get('item_id') == '-')
     		return $this->GetStockView()

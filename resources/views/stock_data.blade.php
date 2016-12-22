@@ -1,11 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-	Gas Batik - Item
-@endsection
-
-@section('item')
-	active
+	Gas Batik - Stock
 @endsection
 
 @section('item_data')
@@ -17,7 +13,7 @@
 @endsection
 
 @section('item_sub')
-
+	collapse
 @endsection
 
 @section('trans_sub')
@@ -25,7 +21,15 @@
 @endsection
 
 @section('stock_sub')
-    collapse    
+        
+@endsection
+
+@section('stock')
+	active
+@endsection
+
+@section('stock_data')
+	active
 @endsection
 
 @section('css')
@@ -34,11 +38,11 @@
 @endsection
 
 @section('content')
-		<h1 class="page-title">Item Data View</h1>
+		<h1 class="page-title">Stock Record</h1>
 		<!-- Breadcrumb -->
 		<ol class="breadcrumb breadcrumb-2"> 
 			<li><a href="./home"><i class="fa fa-home"></i>Home</a></li> 
-			<li><a href="./item_data">Item</a></li> 
+			<li><a href="./stock_data">Stock</a></li> 
 			<li class="active">Data View</li> 
 		</ol>
 		<div class="row">
@@ -65,20 +69,22 @@
 											<th>Purchase</th>
 											<th>Sell</th>
 											<th>Quantity</th>
+											<th>Date</th>
 										</tr>
 									</thead>
 									<tbody>
-									@if ($items->count())
-							            @foreach ($items as $item)
+									@if ($ItemsHistories->count())
+							            @foreach ($ItemsHistories as $itemHist)
 							            <tr>
-							            	<td>{{ $item->code }}</td>
-							            	<td>{{ $item->vendor->name }}</td>
-							            	<td>{{ $item->type->name }}</td>
-							            	<td>{{ $item->material->name }}</td>
-							            	<td>{{ $item->note }}</td>
-							            	<td>{{ $item->purchase_price }}</td>
-							            	<td>{{ $item->sell_price }}</td>
-							            	<td>{{ $item->quantity }}</td>
+							            	<td>{{ $itemHist->item->code }}</td>
+							            	<td>{{ $itemHist->item->vendor->name }}</td>
+							            	<td>{{ $itemHist->item->type->name }}</td>
+							            	<td>{{ $itemHist->item->material->name }}</td>
+							            	<td>{{ $itemHist->item->note }}</td>
+							            	<td>{{ $itemHist->purchase_price }}</td>
+							            	<td>{{ $itemHist->sell_price }}</td>
+							            	<td>{{ $itemHist->quantity }}</td>
+							            	<td>{{ substr($itemHist->created_at,0,10) }}</td>
 							            </tr>
 							            @endforeach
 									@endif
@@ -93,6 +99,7 @@
 											<th>Purchase</th>
 											<th>Sell</th>
 											<th>Quantity</th>
+											<th>Date</th>
 										</tr>
 									</tfoot>
 								</table>
@@ -112,5 +119,5 @@
 	<script src="../resources/assets/js/plugins/datatables/vfs_fonts.js"></script>
 	<script src="../resources/assets/js/plugins/datatables/extensions/Buttons/js/buttons.html5.js"></script>
 	<script src="../resources/assets/js/plugins/datatables/extensions/Buttons/js/buttons.colVis.js"></script>
-	<script src="../resources/assets/js/app/item_data.js"></script>
+	<script src="../resources/assets/js/app/stock_data.js"></script>
 @endsection

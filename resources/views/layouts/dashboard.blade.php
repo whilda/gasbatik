@@ -83,8 +83,11 @@
 					<li class="@yield('item_input')"><a href="{{ env('APP_URL') }}/public/item_input"><span class="title">Input form</span></a></li>
 				</ul>
 			</li>
-			<li class="@yield('stock')">
-				<a href="{{ env('APP_URL') }}/public/stock"><i class="icon-archive"></i><span class="title">Stock</span></a>
+			<li class="has-sub @yield('stock')"><a href="#"><i class=" icon-basket"></i><span class="title">Stock</span></a>
+				<ul class="nav @yield('stock_sub')"><!-- Pay Attention -->
+					<li class="@yield('stock_data')"><a href="{{ env('APP_URL') }}/public/stock"><span class="title">Data view</span></a></li>
+					<li class="@yield('stock_input')"><a href="{{ env('APP_URL') }}/public/stock_input"><span class="title">Input form</span></a></li>
+				</ul>
 			</li>
 			<li class="has-sub @yield('trans')"><a href="#"><i class=" icon-basket"></i><span class="title">Transaction</span></a>
 				<ul class="nav @yield('trans_sub')"><!-- Pay Attention -->

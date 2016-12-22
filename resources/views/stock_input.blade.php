@@ -4,10 +4,6 @@
 	Gas Batik - Stock
 @endsection
 
-@section('stock')
-	active
-@endsection
-
 @section('dash_sub')
 	collapse
 @endsection
@@ -18,6 +14,18 @@
 
 @section('trans_sub')
 	collapse
+@endsection
+
+@section('stock_sub')
+	
+@endsection
+
+@section('stock')
+	active
+@endsection
+
+@section('stock_input')
+	active
 @endsection
 
 @section('css')
@@ -55,7 +63,7 @@
 						        Data has been saved successfully
 						    </div>
 						@endif
-			        	<form method="post" action="./stock" onsubmit="return confirm('Are you sure you want to submit?');">
+			        	<form method="post" action="./stock_input" onsubmit="return confirm('Are you sure you want to submit?');">
 						  <div class="form-group row">
 						    <label for="inputEmail3" class="col-sm-2 form-control-label">Item Code</label>
 						    <div class="col-sm-10">
@@ -145,5 +153,5 @@
 
 	@section('script')
 	<script src="../resources/assets/js/plugins/select2/select2.full.min.js"></script>
-	<script src="../resources/assets/js/app/stock.js"></script>
+	<script src="../resources/assets/js/app/stock_input.js"></script>
 @endsection

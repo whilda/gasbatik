@@ -13,4 +13,8 @@ class ItemHistory extends Model
 			'purchase_price',
 			'sell_price',
 	];
+	public function item()
+	{
+		return $this->belongsTo('App\Item','item_id');
+	}
 }

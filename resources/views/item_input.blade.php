@@ -24,6 +24,10 @@
 	collapse
 @endsection
 
+@section('stock_sub')
+    collapse    
+@endsection
+
 @section('css')
 	<link href="../resources/assets/css/plugins/select2/select2.css" rel="stylesheet">
 @endsection
