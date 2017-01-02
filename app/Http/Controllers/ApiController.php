@@ -118,8 +118,10 @@ class ApiController extends Controller
     */
     public function GetStockGauge()
     {
-        $last_month_revenue = (new HomeController)->CalcRevenue()[1]->total;
-        $this_month_stocking = (new HomeController)->CalcStock()[0]->total;
+        $rev = (new HomeController)->CalcRevenue();
+        $stock = (new HomeController)->CalcStock();
+        $last_month_revenue = (count($rev) > 1) ? $rev[1]->total : 0;
+        $this_month_stocking = (count($stock) > 0) ? $stock[0]->total : 0;
         $json_obj = array(
                 'last_month_revenue'    => $last_month_revenue,
                 'this_month_stocking'   => $this_month_stocking,
